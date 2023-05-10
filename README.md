@@ -67,4 +67,8 @@ yarn hardhat --network optimism mint --contract <CONTRACT_ADDRESS> --to <TO_ADDR
 yarn hardhat --network optimism mint --contract <CONTRACT_ADDRESS> --to <TO_ADDRESSES_COMMA_SEPARATED> --uri <URIS_COMMA_SEPARATED>
 ```
 
+## NOTES
+
+Information about deployments will be saved in the `./deployments` directory
+
 
