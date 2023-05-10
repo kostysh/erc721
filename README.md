@@ -1,6 +1,6 @@
 # Simple ERC712 token
 
-## Environment
+## Configuration
 
 Create in the repository root `.env` file with the following content:
 
@@ -10,6 +10,8 @@ KEY=<your_private_key>
 ```
 
 > !!! do not commit or share your `.env` file with the private key
+
+> Do not forget to update your token `name` and `symbol` in the file `./contracts/Token.sol` (line 16)
 
 ## Setup
 
@@ -34,3 +36,35 @@ To start deployment use command:
 ```bash
 yarn hardhat --network optimism deploy
 ```
+
+## Contract verification
+
+```bash
+yarn hardhat --network optimism etherscan-verify
+```
+
+or
+
+```bash
+yarn hardhat --network optimism verify <CONTRACT_ADDRESS>
+```
+
+## Tasks
+
+There is available the following tasks:
+
+- `mint`: Single token minting
+
+```bash
+yarn hardhat --network optimism mint --contract <CONTRACT_ADDRESS> --to <TO_ADDRESS> --uri <URI>
+```
+
+- `mintBulk`: Multiple tokens minting
+
+> !!! Comma-separated addresses and URIs must be equal by elements length
+
+```bash
+yarn hardhat --network optimism mint --contract <CONTRACT_ADDRESS> --to <TO_ADDRESSES_COMMA_SEPARATED> --uri <URIS_COMMA_SEPARATED>
+```
+
+
