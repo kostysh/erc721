@@ -6,6 +6,10 @@ import { Token__factory } from '../typechain';
 const addresses: string[] = [];
 const uris: string[] = [];
 
+if (addresses.length !== uris.length) {
+  throw new Error('Invalid bulk mint configuration! Length of both arrays must be equal!');
+}
+
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { ethers, network, deployments, getNamedAccounts } = hre;
 
@@ -30,7 +34,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     );
   }
 
-  if (network.name === 'optimism') {
+  if (network.name === 'optimism' && addresses.length > 0) {
     // Send safeMinBulk transaction
     const contract = Token__factory.connect(token.address, ethers.provider);
     const tx = await contract.safeMintBulk(addresses, uris);

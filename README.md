@@ -1,13 +1,36 @@
-# Sample Hardhat Project
+# Simple ERC712 token
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Environment
 
-Try running some of the following tasks:
+Create in the repository root `.env` file with the following content:
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+```
+RPC_URI=https://opt-mainnet.g.alchemy.com/v2/<api_key>
+KEY=<your_private_key>
+```
+
+> !!! do not commit or share your `.env` file with the private key
+
+## Setup
+
+```bash
+yarn
+yarn compile
+```
+
+## Testing
+
+```bash
+yarn test
+```
+
+## Deployment
+
+If you want to send bulk minting transaction during a deployment you have to edit ./deploy/0001.ts file.
+Add addresses and unique URIs of tokens respectfully to arrays: `addresses` and `uris`.
+
+To start deployment use command:
+
+```bash
+yarn hardhat --network optimism deploy
 ```
